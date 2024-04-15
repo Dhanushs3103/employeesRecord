@@ -6,14 +6,15 @@ let department = document.getElementById("department");
 let experience = document.getElementById("experience");
 let email = document.getElementById("email");
 let mobile  = document.getElementById("mobile");
-let tbody = document.getElementsByTagName("tbody")[0];
+let thead = document.getElementById("thead")
+let tbody = document.getElementById("tbody");
 
 let data = [];
-
+thead.style.display = "none"
+tbody.innerHTML = `<h1>No Data</h1>`
 function handleSubmit (e) {
     e.preventDefault();
-    
-    if(employeeName.value == "" && employeeId.value =="" && department.value == "" & experience.value =="" && email.value == "" && mobile.value == "") {
+    if(employeeName.value == "" && employeeId.value =="" && department.value == "" && experience.value =="" && email.value == "" && mobile.value == "") {
      alert("Fill the form credentials");
     }else {
         console.log("form submitted");
@@ -43,20 +44,43 @@ function saveDataToLocalStorage() {
     localStorage.setItem("data",JSON.stringify(data));
 }
 
-function showData () {
+function showData (e) {
+    thead.style.display = "block"
     let storedData = JSON.parse(localStorage.getItem("data"));
     if(storedData) {
         tbody.innerHTML = "";
         storedData.forEach((employeeData,i)=>{
             let tableRow = document.createElement("tr");
+            //  Employee Name
             let empName =  document.createElement("td");
             empName.textContent = employeeData.employeeName;
-    
-            tableRow.append(empName);
+            // Employee ID
+            let empID  = document.createElement("td");
+            empID.textContent = employeeData.employeeId;
+            // Department 
+            let empDepartment = document.createElement("td");
+            empDepartment.textContent = employeeData.department;
+            // Experience 
+            let empExperience = document.createElement("td");
+            empExperience.textContent = employeeData.experience;
+            // email
+            let empEmail = document.createElement("td");
+            empEmail.textContent = employeeData.email;
+            // Mobile
+            let empMobile = document.createElement("td");
+            empMobile.textContent = employeeData.mobile;
+            // Role
+            let empRole = document.createElement("td");
+            empRole.textContent = employeeData.experience>5 ? "Senior" :employeeData.experience>=2 && employeeData.experience<=5 ? "Junior":"Fresher";
+            // Delete
+            let Delete = document.createElement("button");
+            Delete.textContent = "Delete";
+            tableRow.append(empName,empID,empDepartment,empExperience,empEmail,empMobile,empRole,Delete);
             tbody.append(tableRow);
         })
     }else {
-        tbody.innerHTML = "<h2>No Data</h2>";
+        thead.style.display = "none"
+        tbody.innerHTML = `<h1>No Data</h1>`
     }
     // runing a loop around the data
     
