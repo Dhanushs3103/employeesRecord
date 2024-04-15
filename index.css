@@ -1,4 +1,4 @@
-/* Fill CSS here *//* Fill CSS here */
+
 
 div {
     display: flex;
@@ -10,6 +10,7 @@ div {
     width: 30%;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
     padding: 30px;
+    font-family: Arial, Helvetica, sans-serif;
   }
   
   
@@ -74,9 +75,27 @@ div {
   
   table td,
   table th {
-    border: 1px solid #ddd;
+    border: 1px solid #ccc;
     padding: 8px;
     text-align: center;
+  }
+
+
+
+  
+  #delete {
+    padding: 8px;
+    font-size: 17px;
+    background-color: rgb(231, 86, 115);
+    color: #FFFFFF;
+    border: 0;
+    border-radius: 5px;
+    margin: 2px;
+  }
+
+  #delete:hover {
+    cursor: pointer;
+    background-color: rgb(219, 56, 89) ;
   }
   
   table tr:nth-child(even) {
@@ -85,6 +104,7 @@ div {
   
   table tr:hover {
     background-color: #ddd;
+    cursor: pointer;
   }
   
   table th {

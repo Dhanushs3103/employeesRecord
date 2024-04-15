@@ -10,8 +10,6 @@ let thead = document.getElementById("thead")
 let tbody = document.getElementById("tbody");
 
 let data = [];
-thead.style.display = "none";
-tbody.innerHTML = `<h1>No Data</h1>`
 showData()
 function handleSubmit (e) {
     e.preventDefault();
@@ -53,12 +51,12 @@ function handleDelete(i) {
 function showData () {
     let storedData = JSON.parse(localStorage.getItem("data"));
     if(storedData) {
-        thead.style.display = "block"
         tbody.innerHTML = "";
         storedData.forEach((employeeData,i)=>{
             let tableRow = document.createElement("tr");
             //  Employee Name
             let empName =  document.createElement("td");
+            empName.id = "empName";
             empName.textContent = employeeData.employeeName;
             // Employee ID
             let empID  = document.createElement("td");
@@ -80,6 +78,7 @@ function showData () {
             empRole.textContent = employeeData.experience>5 ? "Senior" :employeeData.experience>=2 && employeeData.experience<=5 ? "Junior":"Fresher";
             // Delete
             let Delete = document.createElement("button");
+            Delete.id = "delete";
             Delete.textContent = "Delete";
             Delete.addEventListener('click',function() {
                 handleDelete(i);
@@ -87,10 +86,8 @@ function showData () {
             tableRow.append(empName,empID,empDepartment,empExperience,empEmail,empMobile,empRole,Delete);
             tbody.append(tableRow);
         })
-    }else {
-        thead.style.display = "none"
-        tbody.innerHTML = `<h1>No Data</h1>`
     }
+
     // runing a loop around the data
     
 }
