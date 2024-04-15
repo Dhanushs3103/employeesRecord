@@ -9,6 +9,8 @@ let mobile  = document.getElementById("mobile");
 let thead = document.getElementById("thead")
 let tbody = document.getElementById("tbody");
 
+
+
 let data = [];
 showData()
 function handleSubmit (e) {

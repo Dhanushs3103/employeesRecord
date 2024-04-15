@@ -157,3 +157,20 @@ div {
     color: #2b619e;
     text-decoration: underline;
   }
+
+
+  #logout {
+    padding: 10px;
+    background-color: rgb(238, 79, 111);
+    color: #FFFFFF;
+    border: 0;
+    font-size: 20px;
+    border-radius: 5px;
+    margin: 2px;
+    cursor: pointer;
+    margin-left: 40px;
+  }
+
+  #logout:hover {
+    background-color: rgb(219, 56, 89) ;
+  }
