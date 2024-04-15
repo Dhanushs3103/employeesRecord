@@ -43,12 +43,12 @@ function saveDataToLocalStorage() {
     localStorage.setItem("data",JSON.stringify(data));
 }
 
-// function handleDelete(i) {
-//    console.log("delete")
-//    data.splice(i,1);
-//    saveDataToLocalStorage();
-//    showData();
-// }
+function handleDelete(i) {
+   console.log("delete")
+   data.splice(i,1);
+   saveDataToLocalStorage();
+   showData();
+}
 
 function showData () {
     let storedData = JSON.parse(localStorage.getItem("data"));
