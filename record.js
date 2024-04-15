@@ -10,8 +10,9 @@ let thead = document.getElementById("thead")
 let tbody = document.getElementById("tbody");
 
 let data = [];
-thead.style.display = "none"
+thead.style.display = "none";
 tbody.innerHTML = `<h1>No Data</h1>`
+showData()
 function handleSubmit (e) {
     e.preventDefault();
     if(employeeName.value == "" && employeeId.value =="" && department.value == "" && experience.value =="" && email.value == "" && mobile.value == "") {
@@ -29,9 +30,7 @@ function handleSubmit (e) {
         data.push(obj);
         saveDataToLocalStorage();
         showData();
-    }
-
-   
+    } 
     employeeName.value = "";
     employeeId.value = "";
     department.value = "";
@@ -44,10 +43,17 @@ function saveDataToLocalStorage() {
     localStorage.setItem("data",JSON.stringify(data));
 }
 
-function showData (e) {
-    thead.style.display = "block"
+// function handleDelete(i) {
+//    console.log("delete")
+//    data.splice(i,1);
+//    saveDataToLocalStorage();
+//    showData();
+// }
+
+function showData () {
     let storedData = JSON.parse(localStorage.getItem("data"));
     if(storedData) {
+        thead.style.display = "block"
         tbody.innerHTML = "";
         storedData.forEach((employeeData,i)=>{
             let tableRow = document.createElement("tr");
@@ -75,6 +81,9 @@ function showData (e) {
             // Delete
             let Delete = document.createElement("button");
             Delete.textContent = "Delete";
+            Delete.addEventListener('click',function() {
+                handleDelete(i);
+            })
             tableRow.append(empName,empID,empDepartment,empExperience,empEmail,empMobile,empRole,Delete);
             tbody.append(tableRow);
         })
